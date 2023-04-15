@@ -3,15 +3,13 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.overzealous</groupId>
+    <groupId>no.deem</groupId>
     <artifactId>remark</artifactId>
-    <version>1.1.0</version>
+    <version>1.3.0</version>
     <inceptionYear>2011</inceptionYear>
     <name>Remark</name>
-    <description>Remark is a library for taking (X)HTML input and outputting clean Markdown, Markdown Extra, or
-        MultiMarkdown compatible text.
-    </description>
-    <url>https://bitbucket.org/OverZealous/remark</url>
+    <description>Remark is a library for taking (X)HTML input and outputting clean Markdown, Markdown Extra, or MultiMarkdown compatible text.</description>
+    <url>https://github.com/skofra0/remark-java</url>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -20,53 +18,54 @@
         </license>
     </licenses>
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+		<java.version>11</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <developers>
         <developer>
             <name>Phil DeJarnett</name>
             <organization>OverZealous Creations, LLC</organization>
             <organizationUrl>http://www.overzealous.com</organizationUrl>
-            <roles>
-                <role>Original Developer</role>
-            </roles>
-        </developer>
-        <developer>
-            <name>Guilherme I F L Weizenmann</name>
-            <email>g.weizenmann@gmail.com</email>
-            <organization>ITQuasar</organization>
-            <organizationUrl>http://itquasar.com</organizationUrl>
-            <roles>
-                <role>Developer</role>
-            </roles>
         </developer>
     </developers>
-    <contributors>
-        <contributor>
-            <name>Alex Boyko</name>
-            <properties>
-                <github>https://github.com/BoykoAlex</github>
-            </properties>
-        </contributor>
-    </contributors>
+    
     <scm>
-        <connection>scm:git:git@github.com:giflw/remark-java.git</connection>
-        <developerConnection>scm:git:git@github.com:giflw/remark-java.git</developerConnection>
-        <url>git@github.com:giflw/remark-java.git</url>
+        <connection>scm:git:git@github.com:skofra0/remark-java.git</connection>
+        <developerConnection>scm:git:git@github.com:skofra0/remark-java.git</developerConnection>
+        <url>git@github.com:skofra0/remark-java.git</url>
     </scm>
+    
     <distributionManagement>
-        <repository>
-            <id>bintray-giflw-maven</id>
-            <name>giflw-maven</name>
-            <url>https://api.bintray.com/maven/giflw/maven/remark-java/;publish=1</url>
-        </repository>
+		<repository>
+			<id>DeemMaven</id>
+			<url>http://maven.deem.no:8081/repository/maven-releases</url>
+		</repository>
     </distributionManagement>
+    
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<release>${java.version}</release>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<compilerArgs>
+						<arg>-parameters</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+			
+    
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -75,12 +74,11 @@
             <version>2.11.0</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.15.3</version>
-            <scope>compile</scope>
-        </dependency>
+		<dependency>
+		  <groupId>org.jsoup</groupId>
+		  <artifactId>jsoup</artifactId>
+		  <version>1.15.4</version>
+		</dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>

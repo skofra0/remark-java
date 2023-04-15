@@ -32,9 +32,7 @@ public abstract class RemarkTester {
 	private static final String HTML_EXT = ".html";
 	private static final String MD_EXT = ".md";
 
-	@SuppressWarnings({"WeakerAccess"})
 	Remark remark;
-	@SuppressWarnings({"WeakerAccess", "CanBeFinal"})
 	String baseURI = "http://www.example.com/";
 
 	/**
@@ -73,7 +71,7 @@ public abstract class RemarkTester {
 			System.out.println(converted);
 			System.out.println("==============================");
 		}
-		Assert.assertEquals(expected, converted);
+		Assert.assertEquals(TestUtils.normalize(expected),TestUtils.normalize( converted));
 	}
 
 }

@@ -26,30 +26,33 @@ import java.net.URL;
  */
 public class TestUtils {
 
-	/**
-	 * Reads a resource into a string.
-	 * @param path Path to resource
-	 * @return String contents of resource
-	 */
-	public static String readResourceToString(String path) {
-		String result;
-		try {
-			URL u = StringUtils.class.getResource(path);
-			if(u == null) {
-				throw new Exception("Resource not found");
-			}
-			File f = FileUtils.toFile(u);
-			if(!f.isFile()) {
-				throw new Exception("Resource file does not exist or is not a file.");
-			}
-			result = FileUtils.readFileToString(f, "UTF-8");
-			if(result == null) {
-				throw new Exception("Error reading resource file.");
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-			result = "UNABLE TO LOAD RESOURCE "+path+": "+e.getMessage();
-		}
-		return result;
-	}
+  /** Reads a resource into a string.
+   * 
+   * @param path Path to resource
+   * @return String contents of resource */
+  public static String readResourceToString(String path) {
+    String result;
+    try {
+      URL u = StringUtils.class.getResource(path);
+      if (u == null) {
+        throw new Exception("Resource not found");
+      }
+      File f = FileUtils.toFile(u);
+      if (!f.isFile()) {
+        throw new Exception("Resource file does not exist or is not a file.");
+      }
+      result = FileUtils.readFileToString(f, "UTF-8");
+      if (result == null) {
+        throw new Exception("Error reading resource file.");
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      result = "UNABLE TO LOAD RESOURCE " + path + ": " + e.getMessage();
+    }
+    return normalize(result);
+  }
+
+  public static String normalize(String val) {
+    return val.replace("\r\n", "\n").replace("\r", "\n");
+  }
 }

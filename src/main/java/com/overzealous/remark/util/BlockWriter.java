@@ -383,4 +383,8 @@ public final class BlockWriter extends PrintWriter {
 			return super.toString();
 		}
 	}
+	
+	public String toStringNormalize() {
+    return toString().replace("\r\n", "\n").replace("\r", "\n");
+  }
 }
